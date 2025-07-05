@@ -10,15 +10,18 @@ interface Transaction {
 }
 
 export const useTransactions = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>(() => {
+    const saved = localStorage.getItem('financial-transactions');
+    return saved ? JSON.parse(saved) : [];
+  });
 
-  // Carregar transações do localStorage
-  useEffect(() => {
-    const savedTransactions = localStorage.getItem('financial-transactions');
-    if (savedTransactions) {
-      setTransactions(JSON.parse(savedTransactions));
-    }
-  }, []);
+  // // Carregar transações do localStorage
+  // useEffect(() => {
+  //   const savedTransactions = localStorage.getItem('financial-transactions');
+  //   if (savedTransactions) {
+  //     setTransactions(JSON.parse(savedTransactions));
+  //   }
+  // }, []);
 
   // Salvar transações no localStorage
   useEffect(() => {
@@ -61,5 +64,6 @@ export const useTransactions = () => {
     getTotalIncome,
     getTotalExpense,
     getBalance,
+    setTransactions, // Expose setTransactions for direct updates if needed
   };
 };
