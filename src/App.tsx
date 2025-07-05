@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calculator, TrendingUp, TrendingDown, Wallet } from 'lucide-react';
+import { TrendingUp, TrendingDown, Wallet } from 'lucide-react';
 import FinancialCard from './components/FinancialCard';
 import TransactionList from './components/TransactionList';
 import AddTransactionForm from './components/AddTransactionForm';
@@ -25,11 +25,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-500 rounded-xl">
-                <Calculator className="w-6 h-6 text-white" />
+              <div className="rounded-xl">
+                <img className='w-14 object-cover' src="/src/image/favicon.png" alt="logo" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Gerenciador Financeiro</h1>
+                <h1 className="sm:text-2xl font-bold text-gray-900">Gerenciador Financeiro</h1>
                 <p className="text-sm text-gray-600">Controle seus ganhos e gastos</p>
               </div>
             </div>
@@ -44,7 +44,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl min-h-[71vh] mx-auto px-4 sm:px-6 mb-10 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Cards and Form */}
           <div className="lg:col-span-2 space-y-6">
@@ -97,13 +97,13 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
+      <footer className="bg-white w-full py-2 border-t border-gray-200 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center text-gray-500">
             <p className="text-sm mb-2">
               Gerenciador Financeiro - Preparado para integração com WhatsApp
             </p>
-            <p className="text-xs mt-16">
+            <p className="text-xs mt-3">
               Totos direitos reservados &copy; {new Date().getFullYear()} - Desenvolvido por 
               <a
                 href="">
