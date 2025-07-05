@@ -4,6 +4,7 @@ import FinancialCard from './components/FinancialCard';
 import TransactionList from './components/TransactionList';
 import AddTransactionForm from './components/AddTransactionForm';
 import { useTransactions } from './hooks/useTransactions';
+import Logo from './image/favicon.png';
 
 function App() {
   const {
@@ -26,7 +27,7 @@ function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="rounded-xl">
-                <img className='w-14 object-cover' src="/src/image/favicon.png" alt="logo" />
+                <img className='w-14 object-cover' src={Logo} alt="logo" />
               </div>
               <div>
                 <h1 className="sm:text-2xl font-bold text-gray-900">Gerenciador Financeiro</h1>
