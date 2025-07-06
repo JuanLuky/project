@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Tag } from 'lucide-react';
+import { Calendar, Tag, Trash2 } from 'lucide-react';
 
 interface Transaction {
   id: string;
@@ -12,9 +12,10 @@ interface Transaction {
 
 interface TransactionListProps {
   transactions: Transaction[];
+  onDelete: (id: string) => void;
 }
 
-const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
+const TransactionList: React.FC<TransactionListProps> = ({ transactions, onDelete }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
       <div className="p-6 bg-gradient-to-r from-gray-50 to-gray-100 border-b">
@@ -23,7 +24,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
           Transações Recentes
         </h2>
       </div>
-      <div className="max-h-96 overflow-y-auto">
+      <div className="max-h-[520px] overflow-y-auto">
         {transactions.length === 0 ? (
           <div className="p-8 text-center text-gray-500">
             <Tag className="w-12 h-12 mx-auto mb-3 text-gray-300" />
@@ -56,7 +57,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
                     {transaction.date}
                   </div>
                 </div>
-                <div className="text-right">
+                <div className="text-right gap-5 flex items-center">
                   <span
                     className={`text-lg font-semibold ${
                       transaction.type === 'income' ? 'text-green-600' : 'text-red-600'
@@ -64,6 +65,13 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
                   >
                     {transaction.type === 'income' ? '+' : '-'}R$ {transaction.amount.toFixed(2)}
                   </span>
+                  <button
+                    onClick={() => onDelete(transaction.id)}
+                    className="text-red-400 hover:text-red-600 transition"
+                    title="Remover transação"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
             </div>

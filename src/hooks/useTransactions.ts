@@ -15,13 +15,13 @@ export const useTransactions = () => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // // Carregar transações do localStorage
-  // useEffect(() => {
-  //   const savedTransactions = localStorage.getItem('financial-transactions');
-  //   if (savedTransactions) {
-  //     setTransactions(JSON.parse(savedTransactions));
-  //   }
-  // }, []);
+// Carrega do localStorage ao iniciar
+  useEffect(() => {
+    const saved = localStorage.getItem('financial-transactions');
+    if (saved) {
+      setTransactions(JSON.parse(saved));
+    }
+  }, []);
 
   // Salvar transações no localStorage
   useEffect(() => {
@@ -38,7 +38,10 @@ export const useTransactions = () => {
   };
 
   const removeTransaction = (id: string) => {
-    setTransactions(prev => prev.filter(t => t.id !== id));
+    const confirmDelete = confirm('Deseja realmente remover essa transação?');
+    if (confirmDelete) {
+      setTransactions((prev) => prev.filter((t) => t.id !== id));
+    }
   };
 
   const getTotalIncome = () => {

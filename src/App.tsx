@@ -1,4 +1,3 @@
-import React from 'react';
 import { TrendingUp, TrendingDown, Wallet } from 'lucide-react';
 import FinancialCard from './components/FinancialCard';
 import TransactionList from './components/TransactionList';
@@ -13,6 +12,7 @@ function App() {
     getTotalIncome,
     getTotalExpense,
     getBalance,
+    removeTransaction
   } = useTransactions();
 
   const totalIncome = getTotalIncome();
@@ -92,7 +92,7 @@ function App() {
 
           {/* Right Column - Transaction List */}
           <div className="lg:col-span-1">
-            <TransactionList transactions={transactions} />
+            <TransactionList transactions={transactions} onDelete={removeTransaction} />
           </div>
         </div>
       </main>
