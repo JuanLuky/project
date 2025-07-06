@@ -38,10 +38,9 @@ export const useTransactions = () => {
   };
 
   const removeTransaction = (id: string) => {
-    const confirmDelete = confirm('Deseja realmente remover essa transação?');
-    if (confirmDelete) {
-      setTransactions((prev) => prev.filter((t) => t.id !== id));
-    }
+    // Verifica se o ID é válido antes de remover
+    if (!id) return;
+    setTransactions((prev) => prev.filter((t) => t.id !== id));
   };
 
   const getTotalIncome = () => {
